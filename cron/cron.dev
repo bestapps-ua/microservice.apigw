@@ -1,0 +1,1 @@
+*/5 * * * * /bin/bash /PATHTOAPIGW/cron/scripts/SOME.sh YOURHOST 2>&1 >> /PATHTOLOGSDIR/YOURLOGNAME.log

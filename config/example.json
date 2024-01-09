@@ -1,0 +1,57 @@
+{
+    "db": {
+        "host": "localhost",
+        "name": "",
+        "user": "",
+        "password": ""
+    },
+    "cache": {
+        "type": "memory",
+        "prefix": "micro:YOURSERVICENAME",
+        "models": [],
+        "redis": {
+            "connection": {
+                "port": "6379",
+                "host": "localhost",
+                "login": "",
+                "password": ""
+            }
+        }
+    },
+    "broker": {
+        "nodeID": "node-YOURSERVICENAME",
+        "logLevel": "debug",
+        "transporter": {
+            "type": "redis",
+            "disableOfflineNodeRemoving": true,
+            "disableHeartbeatChecks": true,
+            "redis": {
+                "port": 6379
+            }
+        }
+    },
+    "service": {
+        "name": "apigw-YOURSERVICENAME",
+        "port": "YOURSERVERPORT",
+        "dependencies": [
+            "user",
+            "user.session"
+        ],
+        "session": {
+            "period": 300
+        },
+        "socket": {
+            "name": "apigw-socket-YOURSERVICENAME",
+            "port": "YOURSOCKETPORT"
+        },
+        "internal": {
+            "password": "YOURPASSWORD"
+        }
+    },
+    "auth": {
+        "token": {
+            "activatePeriod": 60,
+            "livePeriod": 300
+        }
+    }
+}

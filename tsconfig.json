@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "noImplicitAny": false,
+        "suppressImplicitAnyIndexErrors": true,
+        "suppressExcessPropertyErrors": true,
+        "allowUnreachableCode": true,
+        "ignoreDeprecations": "5.0",
+        "strict": false,
+        "skipLibCheck": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "pretty": true,
+        "types": [
+            "jest",
+            "node"
+        ],
+        "sourceMap": true,
+        "target": "es6",
+        "baseUrl": "./",
+        "outDir": "dist",
+    },
+    "include": ["src/**/*"],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "./node_modules",
+        "./node_modules/*",
+        "./node_modules/@types/node/index.d.ts"
+    ]
+
+}
