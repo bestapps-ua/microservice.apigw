@@ -1,6 +1,6 @@
 'use strict';
 import appModel from '../app_model';
-import AuthError from "../../entity/api/auth/auth_error";
+
 import apiUserCredentialModel from "../user/api/api_user_credential_model";
 import {
     CREDENTIAL_TYPE_EMAIL, CREDENTIAL_TYPE_GOOGLE,
@@ -15,7 +15,8 @@ import InternalError from "../../entity/error/internal.error";
 import apiUserModel from "../user/api/api_user_model";
 import UserRegisterError from "../../entity/error/user/user.register.error";
 import User from "../../entity/app/user/user";
-let uuid4 = require('uuid/v4');
+import { v4 as uuidv4 } from 'uuid';
+import AuthError from "../../entity/auth/AuthError";
 
 
 class AuthTwitterModel {
@@ -115,7 +116,7 @@ class AuthTwitterModel {
             ok: false,
             error: new UserRegisterError('cannot create api user')
         }
-        await apiUserModel.setPassword(apiUser.uid, uuid4());
+        await apiUserModel.setPassword(apiUser.uid, uuidv4());
 
         let userData = new User({
             uid: apiUser.uid,

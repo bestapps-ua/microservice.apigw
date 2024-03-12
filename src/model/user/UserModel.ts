@@ -8,7 +8,7 @@ import apiUserParamModel from "./api/ApiUserParamModel";
 import UserRegisterError from "../../entity/error/user/user.register.error";
 import {CREDENTIAL_TYPE_EMAIL, CREDENTIAL_TYPE_KEY, CREDENTIAL_TYPE_PHONE} from "./UserCredentialType";
 let md5 = require('md5');
-let uuid4 = require('uuid/v4');
+import { v4 as uuidv4 } from 'uuid';
 
 let options: IEntitySQLModelOptions = {
     table: 'user',
@@ -83,7 +83,7 @@ class UserModel extends EntitySQLModel {
         credentials.push(
             {
                 type: CREDENTIAL_TYPE_KEY,
-                credential: uuid4()
+                credential: uuidv4()
             }
         );
         let params = [];
@@ -92,7 +92,7 @@ class UserModel extends EntitySQLModel {
             ok: false,
             error: new UserRegisterError('cannot create api user')
         }
-        let password = md5(uuid4()).substring(0, 10);
+        let password = md5(uuidv4()).substring(0, 10);
         await apiUserModel.setPassword(apiUser.uid, password);
         let userData = new User({
             uid: apiUser.uid,

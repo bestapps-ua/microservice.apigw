@@ -4,7 +4,7 @@ import User from "../../entity/user/User";
 let config = require('config');
 
 let momentTz = require('moment-timezone');
-let uuid4 = require('uuid/v4');
+import { v4 as uuidv4 } from 'uuid';
 
 const TYPE_PHONE = 'phone';
 const TYPE_EMAIL = 'email';
@@ -174,7 +174,7 @@ class UserPinModel {
     }
 
     generateToken() {
-        let uid = uuid4();
+        let uid = uuidv4();
         return uid;
     }
 

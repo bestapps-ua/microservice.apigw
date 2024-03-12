@@ -16,7 +16,7 @@ import InternalError from "../../entity/error/internal.error";
 import apiUserModel from "../user/api/api_user_model";
 import UserRegisterError from "../../entity/error/user/user.register.error";
 import User from "../../entity/app/user/user";
-let uuid4 = require('uuid/v4');
+import { v4 as uuidv4 } from 'uuid';
 
 
 class AuthGoogleModel {
@@ -135,7 +135,7 @@ class AuthGoogleModel {
             ok: false,
             error: new UserRegisterError('cannot create api user')
         }
-        await apiUserModel.setPassword(apiUser.uid, uuid4());
+        await apiUserModel.setPassword(apiUser.uid, uuidv4());
 
         let userData = new User({
             uid: apiUser.uid,

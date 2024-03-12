@@ -1,6 +1,6 @@
 import userSessionModel from "./model/user/UserSessionModel";
 
-let uuid4 = require('uuid/v4');
+import { v4 as uuidv4 } from 'uuid';
 const E = require("moleculer-web").Errors;
 let config = require('config');
 const ApiService = require("moleculer-web");

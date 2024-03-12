@@ -29,7 +29,7 @@
         "test": "NODE_ENV= jest",
         "unit": "npm run test --runInBand --detectOpenHandles --forceExit"
     },
-    "version": "1.0.0",
+    "version": "1.0.1",
     "keywords": [
         "sql",
         "orm",

@@ -2,7 +2,7 @@
 
 import appModel from "../../AppModel";
 import ApiUserSession from "../../../entity/user/api/ApiUserSession";
-let uuid4 = require('uuid/v4');
+import { v4 as uuidv4 } from 'uuid';
 let config = require('config');
 
 class ApiUserSessionModel {
@@ -68,7 +68,7 @@ class ApiUserSessionModel {
     }
 
     async createAnonymous(){
-        return await this.create(`anonymous.${uuid4()}`, {
+        return await this.create(`anonymous.${uuidv4()}`, {
             maxPeriod: config.auth.token.activatePeriod,
         });
     }

@@ -14,7 +14,7 @@ import authCodeModel from "../model/auth/AuthCodeModel";
 import userSessionModel from "../model/user/UserSessionModel";
 import responseModel from "../model/ResponseModel";
 
-let uuid4 = require('uuid/v4');
+import { v4 as uuidv4 } from 'uuid';
 
 let config = require('config');
 
@@ -53,7 +53,7 @@ class MoleculerActionsAuth {
                     if (type === 'email' && !password) {
                         return reject(new NotFoundError('password'));
                     } else {
-                        password = uuid4();
+                        password = uuidv4();
                     }
                     let otherUser = await apiUserCredentialModel.find(CREDENTIAL_TYPE_EMAIL, email);
                     if (otherUser) return reject(new ExistError('User with that email exists'));

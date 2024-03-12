@@ -11,7 +11,8 @@ import UserRegisterError from "../../entity/error/user/user.register.error";
 import apiUserModel from "../user/api/ApiUserModel";
 import User from "../../entity/user/User";
 
-let uuid4 = require('uuid/v4');
+import { v4 as uuidv4 } from 'uuid';
+import AuthError from "../../entity/auth/AuthError";
 
 
 class AuthFacebookModel {
@@ -153,7 +154,7 @@ class AuthFacebookModel {
             ok: false,
             error: new UserRegisterError('cannot create api user')
         }
-        await apiUserModel.setPassword(apiUser.uid, uuid4());
+        await apiUserModel.setPassword(apiUser.uid, uuidv4());
 
         let userData = new User({
             uid: apiUser.uid,

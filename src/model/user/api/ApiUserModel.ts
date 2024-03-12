@@ -8,13 +8,13 @@ import apiUserParamModel from "./ApiUserParamModel";
 import User from "../../../entity/user/User";
 
 
-let uuid4 = require('uuid/v4');
+import { v4 as uuidv4 } from 'uuid';
 
 
 class ApiUserModel {
 
     async generateUid() {
-        let uid = uuid4();
+        let uid = uuidv4();
         let apiUser = await this.get(uid);
         if (apiUser) return this.generateUid();
         return uid;

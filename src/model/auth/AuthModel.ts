@@ -15,7 +15,7 @@ import userSessionModel from "../user/UserSessionModel";
 import UserSession from "../../entity/user/UserSession";
 import UserRegisterError from "../../entity/error/user/user.register.error";
 import InternalError from "../../entity/error/internal.error";
-let uuid4 = require('uuid/v4');
+import { v4 as uuidv4 } from 'uuid';
 
 class AuthModel {
 
@@ -209,7 +209,7 @@ class AuthModel {
             ok: false,
             error: new UserRegisterError('cannot create api user')
         }
-        await apiUserModel.setPassword(apiUser.uid, uuid4());
+        await apiUserModel.setPassword(apiUser.uid, uuidv4());
 
         let userData = new User({
             uid: apiUser.uid,

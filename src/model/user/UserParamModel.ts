@@ -2,7 +2,7 @@
 import appModel from "../AppModel";
 import UserParam from "../../entity/user/UserParam";
 
-let uuid4 = require('uuid/v4');
+import { v4 as uuidv4 } from 'uuid';
 
 class UserParamModel {
     async getAll(uid) {
@@ -70,7 +70,7 @@ class UserParamModel {
     async getOrCreateHash(user) {
         let hash = await this.get(user, 'hash');
         if (!hash) {
-            hash = uuid4();
+            hash = uuidv4();
             await this.set(user.uid, 'hash', hash);
         } else {
             hash = hash['value'];
@@ -108,7 +108,7 @@ class UserParamModel {
      * @param token
      */
     async addPushToken(uid: string, token: string) {
-        let key = uuid4();
+        let key = uuidv4();
         await this.set(uid, `push::web::${key}`, token);
     }
 

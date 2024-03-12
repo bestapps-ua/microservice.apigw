@@ -2,14 +2,14 @@ import User from "../entity/user/User";
 import UserSession from "../entity/user/UserSession";
 import AuthCode from "../entity/auth/AuthCode";
 import secureModel from "./SecureModel";
-let uuid4 = require('uuid/v4');
+import { v4 as uuidv4 } from 'uuid';
 
 class ResponseModel {
 
     private getSuccess() {
         let data = {
             ok: true,
-            uid: uuid4(),
+            uid: uuidv4(),
             data: {},
         };
         return JSON.parse(JSON.stringify(data));
